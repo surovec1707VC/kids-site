@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Проверка доступа — CyberLearn</title>
+  <meta name="description" content="CyberLearn — учебная платформа по вёрстке: HTML и CSS с практическими заданиями.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="check">
+  <div class="bg-streams" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+
+  <header class="header">
+    <a class="logo" href="index.html" aria-label="CyberLearn"><span class="logo__cyber">CYBER</span><span class="logo__learn">LEARN</span><span class="logo__cursor">_</span></a>
+    <div class="header__spacer"></div>
+    <p class="header__note">Верстка · HTML · CSS</p>
+  </header>
+
+  <main class="main main--center">
+    <section class="card" id="check-card" aria-live="polite">
+      <h1 class="card__title">Проверка доступа</h1>
+      <p class="card__text" id="check-text">Идёт проверка данных, подождите…</p>
+      <div class="progress-label">
+        <span class="progress-label__name">ЗАГРУЗКА</span>
+        <span class="progress-label__value" id="progress-value">0%</span>
+      </div>
+      <div class="progress" role="progressbar" aria-label="Загрузка"><div class="progress__bar" id="progress-bar"></div></div>
+      <div class="status status--success" id="check-success" hidden>
+        <p class="status__title">Доступ разрешён</p>
+        <p class="status__text">Переход на главную страницу…</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">© 2026 CyberLearn · Учебный проект</footer>
+  <script src="js/app.js"></script>
+</body>
+</html>

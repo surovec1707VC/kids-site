@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Вход — CyberLearn</title>
+  <meta name="description" content="CyberLearn — учебная платформа по вёрстке: HTML и CSS с практическими заданиями.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="login">
+  <div class="bg-streams" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+
+  <header class="header">
+    <a class="logo" href="index.html" aria-label="CyberLearn"><span class="logo__cyber">CYBER</span><span class="logo__learn">LEARN</span><span class="logo__cursor">_</span></a>
+    <div class="header__spacer"></div>
+    <p class="header__note">Верстка · HTML · CSS</p>
+  </header>
+
+  <main class="main main--center">
+    <form class="card" id="login-form" novalidate>
+      <nav class="tabs">
+        <span class="tabs__item is-active">ВХОД</span>
+        <a class="tabs__item" href="register.html">РЕГИСТРАЦИЯ</a>
+      </nav>
+      <h1 class="card__title">Вход в систему</h1>
+      <p class="card__text">Введите логин и пароль для доступа к учебным модулям</p>
+        <div class="field">
+          <label class="field__label" for="login">ЛОГИН</label>
+          <input class="field__input" id="login" name="login" type="text" placeholder="student_01" autocomplete="username" required>
+        </div>
+        <div class="field">
+          <label class="field__label" for="password">ПАРОЛЬ</label>
+          <input class="field__input" id="password" name="password" type="password" placeholder="••••••••" autocomplete="current-password" required>
+        </div>
+      <button class="btn btn--primary btn--block" type="submit">ВОЙТИ</button>
+      <div class="status status--error" id="login-status" role="alert" hidden>
+        <p class="status__title">Доступ запрещён</p>
+        <p class="status__text">Неверный логин или пароль</p>
+      </div>
+      <p class="switch-link"><span>Нет аккаунта?</span><a href="register.html">Зарегистрироваться</a></p>
+    </form>
+  </main>
+
+  <footer class="footer">© 2026 CyberLearn · Учебный проект</footer>
+  <script src="js/app.js"></script>
+</body>
+</html>

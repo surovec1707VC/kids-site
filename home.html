@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Главная — CyberLearn</title>
+  <meta name="description" content="CyberLearn — учебная платформа по вёрстке: HTML и CSS с практическими заданиями.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="home">
+  <div class="bg-streams" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+
+  <header class="header header--home">
+    <a class="logo" href="home.html" aria-label="CyberLearn"><span class="logo__cyber">CYBER</span><span class="logo__learn">LEARN</span><span class="logo__cursor">_</span></a>
+    <nav class="nav">
+      <a class="is-active" href="home.html">Главная</a>
+      <a href="#modules">Курсы</a>
+      <a href="#modules">Практика</a>
+      <a href="#modules">Справочник</a>
+    </nav>
+    <div class="header__spacer"></div>
+    <button class="profile" id="profile" type="button" title="Выйти из аккаунта">
+      <img src="assets/status-dot.svg" width="8" height="8" alt="">
+      <span id="profile-name">student_01</span>
+    </button>
+  </header>
+
+  <main class="main">
+    <section class="hero container">
+      <div class="hero__text">
+        <p class="hero__kicker">&gt; ОБУЧЕНИЕ ВЁРСТКЕ</p>
+        <h1 class="hero__title">Изучай вёрстку. Пиши чистый код.</h1>
+        <p class="hero__lead">Пошаговые модули по HTML и CSS с практическими заданиями. Прогресс сохраняется в твоём профиле.</p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#modules">НАЧАТЬ ОБУЧЕНИЕ</a>
+          <a class="btn btn--secondary" href="#modules">ВСЕ КУРСЫ</a>
+        </div>
+      </div>
+      <pre class="code-panel" aria-label="Пример кода"><span class="code-panel__file">index.html</span><code class="c-tag">&lt;section class="hero"&gt;</code><code class="c-text">  &lt;h1&gt;Привет, мир!&lt;/h1&gt;</code><code class="c-text">  &lt;p class="lead"&gt;Моя первая страница&lt;/p&gt;</code><code class="c-tag">  &lt;a href="#" class="btn"&gt;Старт&lt;/a&gt;</code><code class="c-tag">&lt;/section&gt;</code></pre>
+    </section>
+
+    <section class="modules container" id="modules">
+      <div class="section-head">
+        <h2 class="section-head__title">МОДУЛИ КУРСА</h2>
+        <span class="section-head__meta">6 модулей · 48 уроков</span>
+      </div>
+      <div class="grid">
+        <a class="course" href="#modules">
+          <span class="course__num">01</span>
+          <h3 class="course__title">HTML: основы</h3>
+          <p class="course__desc">Теги, структура страницы, семантика</p>
+          <div class="course__track"><div class="course__bar"></div></div>
+          <span class="course__meta">0 из 8 уроков</span>
+        </a>
+        <a class="course" href="#modules">
+          <span class="course__num">02</span>
+          <h3 class="course__title">CSS: стили</h3>
+          <p class="course__desc">Селекторы, цвета, типографика, box model</p>
+          <div class="course__track"><div class="course__bar"></div></div>
+          <span class="course__meta">0 из 8 уроков</span>
+        </a>
+        <a class="course" href="#modules">
+          <span class="course__num">03</span>
+          <h3 class="course__title">Flexbox</h3>
+          <p class="course__desc">Гибкие макеты и выравнивание элементов</p>
+          <div class="course__track"><div class="course__bar"></div></div>
+          <span class="course__meta">0 из 8 уроков</span>
+        </a>
+        <a class="course" href="#modules">
+          <span class="course__num">04</span>
+          <h3 class="course__title">CSS Grid</h3>
+          <p class="course__desc">Двумерные сетки и сложные раскладки</p>
+          <div class="course__track"><div class="course__bar"></div></div>
+          <span class="course__meta">0 из 8 уроков</span>
+        </a>
+        <a class="course" href="#modules">
+          <span class="course__num">05</span>
+          <h3 class="course__title">Адаптивность</h3>
+          <p class="course__desc">Медиазапросы, mobile first, breakpoints</p>
+          <div class="course__track"><div class="course__bar"></div></div>
+          <span class="course__meta">0 из 8 уроков</span>
+        </a>
+        <a class="course" href="#modules">
+          <span class="course__num">06</span>
+          <h3 class="course__title">Анимации</h3>
+          <p class="course__desc">Transition, keyframes, микровзаимодействия</p>
+          <div class="course__track"><div class="course__bar"></div></div>
+          <span class="course__meta">0 из 8 уроков</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer footer--line">© 2026 CyberLearn · Учебный проект</footer>
+  <script src="js/app.js"></script>
+</body>
+</html>

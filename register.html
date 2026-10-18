@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Регистрация — CyberLearn</title>
+  <meta name="description" content="CyberLearn — учебная платформа по вёрстке: HTML и CSS с практическими заданиями.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="register">
+  <div class="bg-streams" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+
+  <header class="header">
+    <a class="logo" href="index.html" aria-label="CyberLearn"><span class="logo__cyber">CYBER</span><span class="logo__learn">LEARN</span><span class="logo__cursor">_</span></a>
+    <div class="header__spacer"></div>
+    <p class="header__note">Верстка · HTML · CSS</p>
+  </header>
+
+  <main class="main main--center">
+    <form class="card" id="register-form" novalidate>
+      <nav class="tabs">
+        <a class="tabs__item" href="index.html">ВХОД</a>
+        <span class="tabs__item is-active">РЕГИСТРАЦИЯ</span>
+      </nav>
+      <h1 class="card__title">Создать аккаунт</h1>
+      <p class="card__text">Заполните данные, чтобы начать обучение</p>
+        <div class="field">
+          <label class="field__label" for="login">ЛОГИН</label>
+          <input class="field__input" id="login" name="login" type="text" placeholder="student_01" autocomplete="username" required>
+        </div>
+        <div class="field">
+          <label class="field__label" for="email">E-MAIL</label>
+          <input class="field__input" id="email" name="email" type="email" placeholder="student@mail.ru" autocomplete="email" required>
+        </div>
+        <div class="field">
+          <label class="field__label" for="password">ПАРОЛЬ</label>
+          <input class="field__input" id="password" name="password" type="password" placeholder="••••••••" autocomplete="new-password" required>
+        </div>
+        <div class="field">
+          <label class="field__label" for="password2">ПОВТОРИТЕ ПАРОЛЬ</label>
+          <input class="field__input" id="password2" name="password2" type="password" placeholder="••••••••" autocomplete="new-password" required>
+        </div>
+      <div class="status status--error" id="register-error" role="alert" hidden>
+        <p class="status__text"></p>
+      </div>
+      <button class="btn btn--primary btn--block" type="submit">СОЗДАТЬ АККАУНТ</button>
+      <p class="switch-link"><span>Уже есть аккаунт?</span><a href="index.html">Войти</a></p>
+    </form>
+  </main>
+
+  <footer class="footer">© 2026 CyberLearn · Учебный проект</footer>
+  <script src="js/app.js"></script>
+</body>
+</html>
