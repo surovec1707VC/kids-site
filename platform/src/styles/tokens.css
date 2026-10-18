@@ -1,0 +1,56 @@
+/*
+ * CyberLearn — дизайн-токены. Единственный источник цветов, шрифтов и времени анимаций.
+ * Тема только тёмная. Неон (cyan / magenta) — дозированно: кнопки, статусы, прогресс.
+ */
+:root {
+  color-scheme: dark;
+
+  /* Фон и поверхности */
+  --color-bg: #0a0e14;
+  --color-surface: #0d1117;
+  --color-elevated: #141a23;
+
+  /* Линии */
+  --color-line: #1f2733;
+  --color-line-strong: #2d3848;
+
+  /* Текст (контраст на --color-bg: 15.6 / 7.1 / 4.6) */
+  --color-fg: #e6edf3;
+  --color-fg-muted: #9aa7b8;
+  --color-fg-subtle: #6f7c8e;
+  --color-fg-inverse: #0a0e14;
+
+  /* Акценты */
+  --color-accent: #00e5ff;
+  --color-accent-hover: #5ff0ff;
+  --color-accent-soft: rgb(0 229 255 / 0.12);
+  --color-magenta: #ff2e88;
+  --color-magenta-soft: rgb(255 46 136 / 0.12);
+
+  /* Статусы */
+  --color-success: #3ee88a;
+  --color-warning: #ffc947;
+  --color-danger: #ff5370;
+
+  /* Скругления */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+
+  /* Движение: только микро-переходы */
+  --duration-fast: 150ms;
+  --duration-base: 200ms;
+  --duration-slow: 250ms;
+  --ease-out: cubic-bezier(0.2, 0, 0, 1);
+
+  /* Фокус */
+  --focus-ring: 0 0 0 2px var(--color-bg), 0 0 0 4px var(--color-accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0ms;
+    --duration-base: 0ms;
+    --duration-slow: 0ms;
+  }
+}

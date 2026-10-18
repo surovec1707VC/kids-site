@@ -1,0 +1,182 @@
+// CyberLearn — схема БД. Описание и ER-диаграмма: docs/DATABASE.md
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ---------- auth ----------
+
+enum Role {
+  STUDENT
+  ADMIN
+}
+
+model User {
+  id            String            @id @default(cuid())
+  login         String            @unique
+  email         String            @unique
+  passwordHash  String
+  displayName   String?
+  role          Role              @default(STUDENT)
+  xp            Int               @default(0)
+  level         Int               @default(1)
+  createdAt     DateTime          @default(now())
+  updatedAt     DateTime          @updatedAt
+  refreshTokens RefreshToken[]
+  attempts      TaskAttempt[]
+  topicProgress TopicProgress[]
+  achievements  UserAchievement[]
+  xpEvents      XpEvent[]
+}
+
+/// Храним только SHA-256 хеш refresh-токена, сам токен живёт в httpOnly cookie.
+model RefreshToken {
+  id        String    @id @default(cuid())
+  tokenHash String    @unique
+  userId    String
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userAgent String?
+  expiresAt DateTime
+  revokedAt DateTime?
+  createdAt DateTime  @default(now())
+
+  @@index([userId])
+}
+
+// ---------- content: глава -> тема -> задание ----------
+
+model Chapter {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  title       String
+  description String?
+  order       Int
+  isPublished Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  topics      Topic[]
+
+  @@index([order])
+}
+
+model Topic {
+  id               String          @id @default(cuid())
+  chapterId        String
+  chapter          Chapter         @relation(fields: [chapterId], references: [id], onDelete: Cascade)
+  slug             String
+  title            String
+  summary          String?
+  /// Текст урока в Markdown
+  content          String
+  order            Int
+  estimatedMinutes Int?
+  createdAt        DateTime        @default(now())
+  updatedAt        DateTime        @updatedAt
+  tasks            Task[]
+  progress         TopicProgress[]
+
+  @@unique([chapterId, slug])
+  @@index([chapterId, order])
+}
+
+enum TaskType {
+  QUIZ
+  CODE
+  TEXT
+}
+
+model Task {
+  id        String        @id @default(cuid())
+  topicId   String
+  topic     Topic         @relation(fields: [topicId], references: [id], onDelete: Cascade)
+  type      TaskType
+  title     String
+  prompt    String
+  /// Варианты ответа (QUIZ), стартовый код и проверки (CODE) и т.п.
+  payload   Json
+  /// Эталон ответа. Никогда не отдаётся клиенту.
+  solution  Json?
+  xpReward  Int           @default(10)
+  order     Int
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+  attempts  TaskAttempt[]
+
+  @@index([topicId, order])
+}
+
+// ---------- learning: прогресс ----------
+
+model TaskAttempt {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  taskId    String
+  task      Task     @relation(fields: [taskId], references: [id], onDelete: Cascade)
+  answer    Json
+  isCorrect Boolean
+  score     Int      @default(0)
+  createdAt DateTime @default(now())
+
+  @@index([userId, taskId])
+}
+
+enum ProgressStatus {
+  NOT_STARTED
+  IN_PROGRESS
+  COMPLETED
+}
+
+model TopicProgress {
+  userId      String
+  user        User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  topicId     String
+  topic       Topic          @relation(fields: [topicId], references: [id], onDelete: Cascade)
+  status      ProgressStatus @default(NOT_STARTED)
+  percent     Int            @default(0)
+  startedAt   DateTime?
+  completedAt DateTime?
+  updatedAt   DateTime       @updatedAt
+
+  @@id([userId, topicId])
+}
+
+// ---------- gamification ----------
+
+model Achievement {
+  id          String            @id @default(cuid())
+  code        String            @unique
+  title       String
+  description String
+  icon        String?
+  xpReward    Int               @default(0)
+  users       UserAchievement[]
+}
+
+model UserAchievement {
+  userId        String
+  user          User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  achievementId String
+  achievement   Achievement @relation(fields: [achievementId], references: [id], onDelete: Cascade)
+  earnedAt      DateTime    @default(now())
+
+  @@id([userId, achievementId])
+}
+
+/// Журнал начислений опыта. User.xp — денормализованная сумма для быстрых выборок.
+model XpEvent {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  amount    Int
+  reason    String
+  sourceId  String?
+  createdAt DateTime @default(now())
+
+  @@index([userId, createdAt])
+}
