@@ -1,0 +1,20 @@
+{
+  "root": true,
+  "extends": ["next/core-web-vitals", "prettier"],
+  "rules": {
+    "no-console": ["warn", { "allow": ["warn", "error"] }],
+    "prefer-const": "error",
+    "import/no-anonymous-default-export": "off",
+    "no-restricted-imports": [
+      "error",
+      {
+        "patterns": [
+          {
+            "group": ["@/features/*/*", "!@/features/*/server"],
+            "message": "Импортируйте фичу через её публичный index.ts (или /server для серверного кода)."
+          }
+        ]
+      }
+    ]
+  }
+}
